@@ -40,6 +40,15 @@ jobs:
 
             - name: Install scripts
               run:  ./scripts/feeds install -a
+              
+            - name: Fix telephony Makefile
+              run: sed -i 's/[[:space:]]*libpcre \\/\tlibpcre2 \\/' ./package/feeds/telephony/freeswitch/Makefile
+              
+            - name: Update scripts again for sanity
+              run:  ./scripts/feeds update
+
+            - name: Install scripts again for sanity
+              run:  ./scripts/feeds install -a
 
             - name: Generate config
               run:  cp nss-setup/config-nss.seed .config
