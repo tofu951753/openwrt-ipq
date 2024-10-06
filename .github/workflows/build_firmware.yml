@@ -42,7 +42,7 @@ jobs:
               run:  ./scripts/feeds install -a
               
             - name: Fix telephony Makefile
-              run: sed -i 's/[[:space:]]*libpcre \\/\tlibpcre2 \\/' ./package/feeds/telephony/freeswitch/Makefile
+              run: sed -i 's/\([[:space:]]*\)libpcre\([[:space:]]*\\\)/\1libpcre2\2/' ./package/feeds/telephony/freeswitch/Makefile
               
             - name: Update scripts again for sanity
               run:  ./scripts/feeds update
