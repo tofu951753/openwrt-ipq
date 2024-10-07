@@ -85,5 +85,5 @@ jobs:
             - name: Release
               uses: ncipollo/release-action@v1
               with:
-                tag: ${{ CUR_DATE }}-MX4300-${{ env.SHA }}
+                tag: ${{ env.CUR_DATE }}-MX4300-${{ env.SHA }}
                 artifacts: bin/targets/qualcommax/ipq807x/*.bin
