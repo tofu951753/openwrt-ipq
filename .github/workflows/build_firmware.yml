@@ -77,7 +77,7 @@ jobs:
               run: make -j$(($(nproc)+1))
 
             - name: Set current date as env variable
-              run: echo "CUR_DATE=$(date +'%Y-%m-%dT%H:%M')" >> $GITHUB_ENV
+              run: echo "CUR_DATE=$(date +'%Y-%m-%dT%H-%M')" >> $GITHUB_ENV
 
             - name: Get SHA
               uses: benjlevesque/short-sha@v2.2
