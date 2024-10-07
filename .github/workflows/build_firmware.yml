@@ -76,14 +76,14 @@ jobs:
             - name: Build firmware images
               run: make -j$(($(nproc)+1))
 
-            - name: Get SHA
-              uses: benjlevesque/short-sha@v2.2
-              
             - name: Set current date as env variable
               run: echo "CUR_DATE=$(date +'%Y-%m-%dT%H:%M')" >> $GITHUB_ENV
 
+            - name: Get SHA
+              uses: benjlevesque/short-sha@v2.2
+              
             - name: Release
               uses: ncipollo/release-action@v1
               with:
-                tag: ${{ env.CUR_DATE }}-MX4300-${{ env.SHA }}
+                tag: mx4300-nss-${{ env.SHA }}-${{ env.CUR_DATE }}
                 artifacts: bin/targets/qualcommax/ipq807x/*.bin
