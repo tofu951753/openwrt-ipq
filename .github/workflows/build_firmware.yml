@@ -41,8 +41,11 @@ jobs:
             - name: Install scripts
               run:  ./scripts/feeds install -a
               
+            - name: Install scripts again to check for warnings
+              run:  ./scripts/feeds install -a
+              
             - name: Fix telephony Makefile
-              run: sed -i 's/\([[:space:]]*\)libpcre\([[:space:]]*\\\)/\1libpcre2\2/' ./package/feeds/telephony/freeswitch/Makefile
+              run: sed -i 's/[[:space:]]*libpcre \\/\tlibpcre2 \\/' ./package/feeds/telephony/freeswitch/Makefile
               
             - name: Update scripts again for sanity
               run:  ./scripts/feeds update
@@ -80,4 +83,4 @@ jobs:
               uses: ncipollo/release-action@v1
               with:
                 tag: qualcommax-nss-${{ env.SHA }}
-                artifacts: bin/targets/qualcommax/ipq807x/*
+                artifacts: bin/targets/qualcommax/ipq807x/*.bin
